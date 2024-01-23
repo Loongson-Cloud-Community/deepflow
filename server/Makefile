@@ -5,7 +5,7 @@ REVISION = $(shell git rev-parse HEAD)
 Branch = $(shell git branch  --show-current)
 COMPILE_TIME= $(shell date +"%Y-%m-%d %H:%M:%S")
 FLAGS = -gcflags "-l -l" -ldflags "-X main.Branch=${Branch} -X main.RevCount=${REV_COUNT} -X main.Revision=${REVISION} -X main.CommitDate=${COMMIT_DATE} \
-		-X 'main.goVersion=$(shell go version)' -X 'main.CompileTime=${COMPILE_TIME}'"
+		-X 'main.goVersion=$(shell go version)' -X 'main.CompileTime=${COMPILE_TIME}'" -ldflags  '-extldflags "-static -fpic"'
 BINARY_SUFFIX :=
 
 .PHONY: all
